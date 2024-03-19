@@ -15,7 +15,7 @@
  *  Unlike the other standard containers, mfpkg::forward_list provides
  *  specialized algorithms %unique to linked lists, such as splicing, 
  *  sorting, and in-place reversal. Also unlike std::forward_list, 
- *  mfpkg::forward_list provides extra methods such as push_back(), 
+ *  mfpkg::forward_list provides extra operations such as push_back(), 
  *  back() and size(). 
  * 
  *  @file forward_list.h

@@ -442,7 +442,7 @@ public:
     /**
      * @brief Sorts the %forward_list.
      * 
-	 * This function sorts the %forward_list. Equivalent elements
+     * This function sorts the %forward_list. Equivalent elements
      * remain in list order. 
     */
     void sort(void) noexcept

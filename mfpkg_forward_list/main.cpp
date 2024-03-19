@@ -57,7 +57,5 @@ int main(void)
     }
     puts("null");
 
-    std::forward_list<int> ss;
-
     return 0;
 }

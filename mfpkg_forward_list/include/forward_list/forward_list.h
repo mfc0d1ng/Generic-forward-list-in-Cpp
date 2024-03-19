@@ -19,7 +19,7 @@
  *  back() and size(). 
  * 
  *  @file forward_list.h
- *  @author Mohamed fareed.
+ *  @author Mohamed fareed
  */
 
 #ifndef FORWARD_LIST_H

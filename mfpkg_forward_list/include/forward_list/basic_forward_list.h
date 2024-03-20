@@ -678,6 +678,10 @@ protected:
             return count;
         }
 
+        /**
+         * I don't own the sort algorithm, You can check it via this link
+         * https://www.geeksforgeeks.org/iterative-merge-sort-for-linked-list/
+         */
         void sort(void) noexcept
         {
             if (!start.link || !start.link->link)

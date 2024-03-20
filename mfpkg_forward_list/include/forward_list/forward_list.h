@@ -102,6 +102,15 @@ public:
     }
 
     /**
+     *  Returns a const iterator that points before the first element
+     *  in the %forward_list.  Iteration is done in ordinary element order.
+     */
+    Iterator before_begin(void) const noexcept
+    {
+        return object.before_begin();
+    }
+
+    /**
      * Returns a read/write iterator that points to the first element
      * in the %forward_list. Iteration is done in ordinary element order.
      */

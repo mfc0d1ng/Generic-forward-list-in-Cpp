@@ -28,6 +28,8 @@ public:
     struct iterator
     {
         typedef iterator<_Tp> _Self;
+        typedef _Tp& reference;
+        typedef node<_Tp>* pointer;
 
         public:
 
@@ -43,12 +45,12 @@ public:
 
         ~iterator() {}
 
-        _Tp& operator*() const noexcept
+        reference operator*() const noexcept
         {
             return static_cast<node<_Tp>*>(_M_node)->storage;
         }
 
-        node<_Tp>* operator->() const noexcept
+        pointer operator->() const noexcept
         {
             return static_cast<node<_Tp>*>(_M_node);
         }
@@ -125,6 +127,9 @@ public:
     struct const_iterator
     {
         typedef const_iterator<_Tp> _Self;
+        typedef iterator<_Tp> Iterator;
+        typedef const _Tp& reference;
+        typedef const node<_Tp>* pointer;
 
         public:
 
@@ -134,16 +139,18 @@ public:
 
         const_iterator(const node_base* __n) noexcept : _M_node(__n) {}
 
+        const_iterator(const Iterator& __it) noexcept : _M_node(__it._M_node) {}
+
         const_iterator(const _Self& __it) noexcept : _M_node(__it._M_node) {}
 
         ~const_iterator() {}
 
-        const _Tp& operator*() const noexcept
+        reference operator*() const noexcept
         {
             return static_cast<const node<_Tp>*>(_M_node)->storage;
         }
 
-        const node<_Tp>* operator->() const noexcept
+        pointer operator->() const noexcept
         {
             return static_cast<const node<_Tp>*>(_M_node);
         }

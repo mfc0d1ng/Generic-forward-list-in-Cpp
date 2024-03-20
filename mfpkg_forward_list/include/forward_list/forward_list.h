@@ -33,6 +33,7 @@ private:
     typedef iterator<_Tp> Iterator;
     typedef const_iterator<_Tp> const_Iterator;
     typedef _Tp& reference;
+    typedef const _Tp& const_reference;
 
     typedef basic_forward_list::forward_list<_Tp> basic_object;
 
@@ -167,7 +168,7 @@ public:
     /**
      * Returns a read-only (constant) reference to the first element in non-empty %forward_list.
      */
-    const reference front(void) const noexcept
+    const_reference front(void) const noexcept
     {
         return *begin();
     }
@@ -183,7 +184,7 @@ public:
     /**
      * Returns a read-only (constant) reference to the last element in non-empty %forward_list.
      */
-    const reference back(void) const noexcept
+    const_reference back(void) const noexcept
     {
         return *rbegin();
     }
@@ -361,17 +362,14 @@ public:
      *  the element referenced by @a position.  @a list becomes an empty
      *  list.
      */
-    void splice_after(const Iterator& __position, _Self& __list) noexcept
+    void splice_after(const Iterator& __position, _Self&& __list) noexcept
     {
         object.splice_after(__position._M_node, __list.object);
     }
 
-    /**
-     *
-     */
-    void splice_after(const Iterator& __position, const _Self& __list) noexcept
+    void splice_after(const Iterator& __position, _Self& __list) noexcept
     {
-        splice_after(__position, const_cast<_Self&>(__list));
+        splice_after(__position, std::move(__list));
     }
 
     /**
@@ -384,9 +382,14 @@ public:
      *  Removes the element after the element referenced by @a i in @a list 
      *  and inserts it into the current list after @a position.
      */
-    void splice_after(const Iterator& __position, _Self& __list, const Iterator& __i) noexcept
+    void splice_after(const Iterator& __position, _Self&& __list, const Iterator& __i) noexcept
     {
         object.splice_after(__position._M_node, __list.object, __i._M_node);
+    }
+
+    void splice_after(const Iterator& __position, _Self& __list, const Iterator& __i) noexcept
+    {
+        splice_after(__position._M_node, std::move(__list), __i._M_node);
     }
 
     /**
@@ -400,10 +403,16 @@ public:
      *  Removes elements in the range (__before,__last) in @a list and inserts
      *  them after @a __position in constant time.
      */
-    void splice_after(const Iterator& __position, _Self& __list, const Iterator& __before,
+    void splice_after(const Iterator& __position, _Self&& __list, const Iterator& __before,
                                                                  const Iterator& __last) noexcept
     {
         object.splice_after(__position._M_node, __list.object, __before._M_node, __last._M_node);
+    }
+
+    void splice_after(const Iterator& __position, _Self& __list, const Iterator& __before,
+                                                                 const Iterator& __last) noexcept
+    {
+        splice_after(__position._M_node, std::move(__list), __before._M_node, __last._M_node);
     }
 
     /**

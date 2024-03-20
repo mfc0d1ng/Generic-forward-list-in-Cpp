@@ -476,6 +476,11 @@ protected:
             return &start;
         }
 
+        node_base* before_begin(void) const noexcept
+        {
+            return &start;
+        }
+
         node_base* begin(void) noexcept
         {
             return start.link;

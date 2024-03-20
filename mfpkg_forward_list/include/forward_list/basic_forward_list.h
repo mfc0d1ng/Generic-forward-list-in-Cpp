@@ -385,7 +385,7 @@ protected:
             {
                 for (; count < __n; ++count)
                 {
-                    __node = get_node();
+                    __node = get_node({});
                     insert_before_begin(__node);
                 }
             }
@@ -393,7 +393,7 @@ protected:
             {
                 for (; count < __n; ++count)
                 {
-                    __node = get_node();
+                    __node = get_node({});
                     insert_after(finish.link, __node);
                 }
             }
@@ -454,7 +454,7 @@ protected:
 
         void assign(_Self&& __list)
         {
-            if(start.link)
+            if(begin())
             {
                 clear();
             }

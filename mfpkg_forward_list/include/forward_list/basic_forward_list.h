@@ -243,6 +243,21 @@ protected:
             return __node;
         }
 
+        node<_Tp>* get_node(void)
+        {
+            node<_Tp>* __node = nullptr;
+            try 
+            {
+                __node = new node<_Tp>();
+            }
+            catch (const std::bad_alloc& __e) 
+            {
+                this->~forward_list();
+                std::cout << __e.what() << '\n';
+            }
+            return __node;
+        }
+
         void init_list(node_base* __node)
         {
             __node->link = nullptr;
@@ -383,19 +398,14 @@ protected:
             node<_Tp>* __node = nullptr;
             if(empty())
             {
-                for (; count < __n; ++count)
-                {
-                    __node = get_node({});
-                    insert_before_begin(__node);
-                }
+                __node = get_node();
+                init_list(__node);
+                ++count;
             }
-            else
+            for (; count < __n; ++count)
             {
-                for (; count < __n; ++count)
-                {
-                    __node = get_node({});
-                    insert_after(finish.link, __node);
-                }
+                __node = get_node();
+                insert_after(rbegin(), __node);
             }
         }
 

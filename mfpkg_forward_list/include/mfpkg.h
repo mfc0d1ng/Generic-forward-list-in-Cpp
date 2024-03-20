@@ -1,7 +1,6 @@
 #ifndef MFPKG_H
 #define MFPKG_H
 
-#include <string.h>
 #include <initializer_list>
 
 namespace basic_mfpkg

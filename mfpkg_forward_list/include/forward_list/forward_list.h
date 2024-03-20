@@ -44,7 +44,7 @@ public:
 
     forward_list(std::initializer_list<_Tp> __list)
     {
-        for (auto &__x : __list)
+        for (auto& __x : __list)
         {
             object.insert_after(object.rbegin(), __x);
         }
@@ -52,7 +52,7 @@ public:
 
     forward_list(const _Self& __list)
     {
-        for (auto &__x : __list)
+        for (auto& __x : __list)
         {
             object.insert_after(object.rbegin(), __x);
         }

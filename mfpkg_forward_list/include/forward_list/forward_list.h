@@ -569,7 +569,7 @@ public:
     }
 
     /**
-     * @brief Swap contents of two %forward_lists.
+     * @brief Swaps data with another %forward_list.
      * @param  __list  A %forward_list of the same element type.
      * 
      * This exchanges the elements between two lists in constant

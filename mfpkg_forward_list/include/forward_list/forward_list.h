@@ -570,22 +570,15 @@ public:
 
     /**
      * @brief Swap contents of two %forward_lists.
+     * @param  __list  A %forward_list of the same element type.
+     * 
+     * This exchanges the elements between two lists in constant
+     * time.
      */ 
-    void swap(_Self& __list) noexcept
+    void swap(forward_list& __list) noexcept
     {
-        _Self temp = *this;
-        *this = __list;
-        __list = temp;
+        object.swap(__list.object);
     }
-
-    /**
-     * @brief Swap contents of two %forward_lists.
-     */ 
-    void swap(const _Self& __list) noexcept
-    {
-        swap(const_cast<_Self&>(__list));
-    }
-
 };
 
 #endif

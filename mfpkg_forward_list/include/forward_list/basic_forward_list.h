@@ -471,7 +471,7 @@ protected:
 
         void assign(_Self&& __list)
         {
-            if(begin())
+            if(!empty())
             {
                 clear();
             }
@@ -955,9 +955,15 @@ protected:
 
         void swap(_Self& __list) noexcept
         {
-            _Self temp = *this;
-            *this = __list;
-            __list = temp;
+            auto __tmp1 = __list.start;
+            __list.start = this->start;
+            this->start = __tmp1;
+            auto __tmp2 = __list.finish;
+            __list.finish = this->finish;
+            this->finish = __tmp2;
+            auto __tmp3 = __list.count;
+            __list.count = this->count;
+            this->count = __tmp3;
         }
         
     };

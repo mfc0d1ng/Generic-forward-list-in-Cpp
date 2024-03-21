@@ -575,7 +575,7 @@ public:
      * This exchanges the elements between two lists in constant
      * time.
      */ 
-    void swap(forward_list& __list) noexcept
+    void swap(forward_list<_Tp>& __list) noexcept
     {
         object.swap(__list.object);
     }

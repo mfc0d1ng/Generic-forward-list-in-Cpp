@@ -416,6 +416,20 @@ protected:
             }
         }
 
+        void swap(node_base& __p1, node_base& __p2)
+        {
+            auto __tmp = __p1;
+            __p1 = __p2;
+            __p2 = __tmp;
+        }
+
+        void swap(std::size_t& __c)
+        {
+            auto __tmp = __c;
+            __c = this->count;
+            this->count = __tmp;
+        }
+
         void reset(void) noexcept
         {
             start.link = nullptr;
@@ -471,10 +485,6 @@ protected:
 
         void assign(_Self&& __list)
         {
-            if(!empty())
-            {
-                clear();
-            }
             swap(__list);
         }
 
@@ -955,15 +965,9 @@ protected:
 
         void swap(_Self& __list) noexcept
         {
-            auto __tmp1 = __list.start;
-            __list.start = this->start;
-            this->start = __tmp1;
-            auto __tmp2 = __list.finish;
-            __list.finish = this->finish;
-            this->finish = __tmp2;
-            auto __tmp3 = __list.count;
-            __list.count = this->count;
-            this->count = __tmp3;
+            swap(__list.start, this->start);
+            swap(__list.finish, this->finish);
+            swap(__list.count);
         }
         
     };

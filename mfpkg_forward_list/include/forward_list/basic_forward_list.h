@@ -242,10 +242,10 @@ protected:
             {
                 __node = new node<_Tp>({nullptr, __data});
             }
-            catch (const std::bad_alloc& __e) 
+            catch (const std::bad_alloc& __a) 
             {
                 this->~forward_list();
-                std::cout << __e.what() << '\n';
+                std::cout << __a.what() << '\n';
             }
             return __node;
         }
@@ -257,10 +257,10 @@ protected:
             {
                 __node = new node<_Tp>();
             }
-            catch (const std::bad_alloc& __e) 
+            catch (const std::bad_alloc& __a) 
             {
                 this->~forward_list();
-                std::cout << __e.what() << '\n';
+                std::cout << __a.what() << '\n';
             }
             return __node;
         }

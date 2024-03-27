@@ -235,21 +235,6 @@ protected:
         node_base finish;
         std::size_t count;
 
-        node<_Tp>* get_node(const _Tp& __data)
-        {
-            node<_Tp>* __node = nullptr;
-            try 
-            {
-                __node = new node<_Tp>({nullptr, __data});
-            }
-            catch (const std::bad_alloc& __a) 
-            {
-                this->~forward_list();
-                std::cout << __a.what() << '\n';
-            }
-            return __node;
-        }
-
         node<_Tp>* get_node(void)
         {
             node<_Tp>* __node = nullptr;
@@ -530,7 +515,7 @@ protected:
 
         node_base* insert_after(node_base* __pos, const _Tp& __data)
         {
-            node<_Tp>* __node = get_node(__data);
+            node<_Tp>* __node = get_node();
             if(empty())
             {
                 init_list(__node);
@@ -546,6 +531,7 @@ protected:
                     insert_after(__pos, __node);
                 }
             }
+            __node->storage = __data;
             ++count;
             return __node;
         }

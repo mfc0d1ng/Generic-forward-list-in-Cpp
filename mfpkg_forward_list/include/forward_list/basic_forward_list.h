@@ -341,7 +341,7 @@ protected:
             {
                 return;
             }
-            if(start.link == nullptr)
+            if(empty())
             {
                 init_list(__node);
             }

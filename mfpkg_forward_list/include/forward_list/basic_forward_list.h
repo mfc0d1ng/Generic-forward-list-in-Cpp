@@ -699,18 +699,18 @@ protected:
             }
 
             node_base** head = &start.link;
-            node_base* start1 = NULL;
-            node_base* end1 = NULL;
-            node_base* start2 = NULL;
-            node_base* end2 = NULL; 
-            node_base* prevend = NULL;
-            node_base* Temp = NULL;
+            node_base* start1 = nullptr;
+            node_base* end1 = nullptr;
+            node_base* start2 = nullptr;
+            node_base* end2 = nullptr; 
+            node_base* prevend = nullptr;
+            node_base* Temp = nullptr;
 
-            node_base* temp = NULL;
-            node_base* astart = NULL;
-            node_base* aend = NULL;
-            node_base* bstart = NULL;
-            node_base* bendnext = NULL;
+            node_base* temp = nullptr;
+            node_base* astart = nullptr;
+            node_base* aend = nullptr;
+            node_base* bstart = nullptr;
+            node_base* bendnext = nullptr;
 
             std::size_t counter = 0;
             int isFirstIter = 0;

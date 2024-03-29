@@ -235,12 +235,6 @@ protected:
         node_base finish;
         std::size_t count;
 
-        void exit(const char* __msg) noexcept
-        {
-            std::printf("%s : Out of memory", __msg);
-            std::exit(EXIT_FAILURE);
-        }
-
         node<_Tp>* get_node(const _Tp& __data)
         {
             node<_Tp>* __node = new (std::nothrow) node<_Tp>({nullptr, __data});
@@ -422,6 +416,12 @@ protected:
             start.link = nullptr;
             finish.link = nullptr;
             count = 0;
+        }
+
+        void exit(const char* __msg) noexcept
+        {
+            std::printf("%s : Out of memory", __msg);
+            std::exit(EXIT_FAILURE);
         }
 
         public:

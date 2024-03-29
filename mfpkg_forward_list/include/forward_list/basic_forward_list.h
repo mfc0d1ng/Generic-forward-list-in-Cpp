@@ -537,7 +537,7 @@ protected:
 
         void pop_front(void) noexcept
         {
-            if(start.link)
+            if(!empty())
             {
                 erase_first_element();
                 --count;

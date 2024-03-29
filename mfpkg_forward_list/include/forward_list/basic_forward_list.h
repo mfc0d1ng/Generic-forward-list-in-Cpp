@@ -235,35 +235,37 @@ protected:
         node_base finish;
         std::size_t count;
 
+        void exit(const char* __msg) noexcept
+        {
+            std::printf("%s : Out of memory", __msg);
+            std::exit(EXIT_FAILURE);
+        }
+
         node<_Tp>* get_node(const _Tp& __data)
         {
-            node<_Tp>* __node = nullptr;
-            try 
+            node<_Tp>* __node = new (std::nothrow) node<_Tp>({nullptr, __data});
+            if(!__node)
             {
-                __node = new node<_Tp>({nullptr, __data});
-            }
-            catch (const std::bad_alloc& __a) 
-            {
-                this->~forward_list();
-                std::cout << __a.what() << '\n';
+                clear();
+                exit(__PRETTY_FUNCTION__);
             }
             return __node;
         }
 
-        void init_list(node_base* __node)
+        void init_list(node_base* __node) noexcept
         {
             __node->link = nullptr;
             start.link = __node;
             finish.link = __node;
         }
         
-        void insert_before_begin(node_base* __node)
+        void insert_before_begin(node_base* __node) noexcept
         {
             __node->link = start.link;
             start.link = __node;
         }
 
-        void insert_after(node_base* __pos, node_base* __node)
+        void insert_after(node_base* __pos, node_base* __node) noexcept
         {
             __node->link = __pos->link;
             if(__node->link == nullptr)
@@ -273,7 +275,7 @@ protected:
             __pos->link = __node;
         }
 
-        node_base* erase_first_element(void)
+        node_base* erase_first_element(void) noexcept
         {
             node_base* __temp = start.link;
             start.link = start.link->link;
@@ -285,14 +287,14 @@ protected:
             return start.link;
         }
 
-        void erase_last_element(node_base* __pos)
+        void erase_last_element(node_base* __pos) noexcept
         {
             delete finish.link;
             finish.link = __pos;
             __pos->link = nullptr;
         }
 
-        node_base* erase_next_element(node_base* __pos)
+        node_base* erase_next_element(node_base* __pos) noexcept
         {
             node_base* __temp = __pos->link;
             __pos->link = __pos->link->link;
@@ -300,7 +302,7 @@ protected:
             return __pos;
         }
 
-        node_base* unlink_node(_Self& __list, node_base* __i)
+        node_base* unlink_node(_Self& __list, node_base* __i) noexcept
         {
             node_base* __node = nullptr;
             if(__i->link)
@@ -335,7 +337,7 @@ protected:
             return __node;
         }
 
-        void splice_node(node_base* __pos, node_base* __node)
+        void splice_node(node_base* __pos, node_base* __node) noexcept
         {
             if(!__node)
             {
@@ -356,7 +358,7 @@ protected:
             ++count;
         }
 
-        void truncate(node_base* __curr, node_base* __prev)
+        void truncate(node_base* __curr, node_base* __prev) noexcept
         {
             node_base* __temp = nullptr;
             for (; __curr != nullptr; --count)
@@ -369,7 +371,7 @@ protected:
             finish.link->link = nullptr;
         }
 
-        void shrink_list(std::size_t __n)
+        void shrink_list(std::size_t __n) noexcept
         {
             std::size_t __i = 0;
             node_base* __prev = nullptr;
@@ -401,14 +403,14 @@ protected:
             }
         }
 
-        void swap(node_base& __p1, node_base& __p2)
+        void swap(node_base& __p1, node_base& __p2) noexcept
         {
             auto __tmp = __p1;
             __p1 = __p2;
             __p2 = __tmp;
         }
 
-        void swap(std::size_t& __c)
+        void swap(std::size_t& __c) noexcept
         {
             auto __tmp = __c;
             __c = this->count;
@@ -468,7 +470,7 @@ protected:
             }            
         }
 
-        void assign(_Self&& __list)
+        void assign(_Self&& __list) 
         {
             swap(__list);
         }

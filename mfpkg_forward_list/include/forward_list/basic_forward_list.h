@@ -29,7 +29,7 @@ public:
     {
         typedef iterator<_Tp> _Self;
         typedef _Tp& reference;
-        typedef node<_Tp>* pointer;
+        typedef _Tp* pointer;
 
         public:
 
@@ -52,7 +52,7 @@ public:
 
         pointer operator->() const noexcept
         {
-            return static_cast<node<_Tp>*>(_M_node);
+            return &static_cast<node<_Tp>*>(_M_node)->storage;
         }
 
         _Self& operator++() noexcept
@@ -74,7 +74,7 @@ public:
             return __tmp;
         }
 
-        _Self& operator+= (std::size_t __n) noexcept
+        _Self& operator+=(std::size_t __n) noexcept
         {
             for(; __n; --__n)
             {
@@ -90,7 +90,7 @@ public:
             return *this;
         }
 
-        _Self& operator= (const _Self& __it) noexcept
+        _Self& operator=(const _Self& __it) noexcept
         {
             _M_node = __it._M_node;
             return *this;
@@ -129,7 +129,7 @@ public:
         typedef const_iterator<_Tp> _Self;
         typedef iterator<_Tp> Iterator;
         typedef const _Tp& reference;
-        typedef const node<_Tp>* pointer;
+        typedef const _Tp* pointer;
 
         public:
 
@@ -152,7 +152,7 @@ public:
 
         pointer operator->() const noexcept
         {
-            return static_cast<const node<_Tp>*>(_M_node);
+            return &static_cast<const node<_Tp>*>(_M_node)->storage;
         }
 
         _Self& operator++() noexcept
@@ -174,7 +174,7 @@ public:
             return __tmp;
         }
 
-        _Self& operator+= (std::size_t __n) noexcept
+        _Self& operator+=(std::size_t __n) noexcept
         {
             for(; __n; --__n)
             {
@@ -190,7 +190,7 @@ public:
             return *this;
         }
 
-        _Self& operator= (const _Self& __it) noexcept
+        _Self& operator=(const _Self& __it) noexcept
         {
             _M_node = __it._M_node;
             return *this;

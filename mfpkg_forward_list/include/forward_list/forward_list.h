@@ -34,7 +34,6 @@ private:
     typedef const_iterator<_Tp> const_Iterator;
     typedef _Tp& reference;
     typedef const _Tp& const_reference;
-
     typedef basic_forward_list::forward_list<_Tp> basic_object;
 
     basic_object object;

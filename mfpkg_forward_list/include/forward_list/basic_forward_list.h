@@ -444,8 +444,8 @@ protected:
                 return;
             }
             resize(__list.size());
-            auto* __curr = begin();
-            for (auto* __it = __list.begin(); __it != __list.end(); ++__it)
+            auto __curr = begin();
+            for (auto __it = __list.begin(); __it != __list.end(); ++__it)
             {
                 static_cast<node<_Tp>*>(__curr)->storage = *__it;
                 __curr = __curr->link;
@@ -460,8 +460,8 @@ protected:
                 return;
             }
             resize(__list.size());
-            auto* __curr = begin();
-            for (auto* __it = __list.begin(); __it != nullptr; )
+            auto __curr = begin();
+            for (auto __it = __list.begin(); __it != nullptr; )
             {
                 static_cast<node<_Tp>*>(__curr)->storage = 
                 static_cast<node<_Tp>*>(__it)->storage;
@@ -580,7 +580,7 @@ protected:
             {
                 return nullptr;
             }
-            auto* __it = __before;
+            auto __it = __before;
             if(__it == before_begin())
             {
                 while (start.link != __last)
@@ -817,7 +817,7 @@ protected:
         {
             if(!empty())
             {
-                for (auto* __it = begin(); __it && __it->link != nullptr; )
+                for (auto __it = begin(); __it && __it->link != nullptr; )
                 {
                     if(__val == static_cast<node<_Tp>*>(__it->link)->storage)
                     {
@@ -839,7 +839,7 @@ protected:
         {
             if(!empty())
             {
-                for (auto* __it = begin(); __it && __it->link != nullptr; )
+                for (auto __it = begin(); __it && __it->link != nullptr; )
                 {
                     if(__pred(static_cast<node<_Tp>*>(__it->link)->storage))
                     {
@@ -863,7 +863,7 @@ protected:
             {
                 return;
             }
-            for (auto* __it = begin(); __it && __it->link != nullptr; )
+            for (auto __it = begin(); __it && __it->link != nullptr; )
             {
                 if(static_cast<node<_Tp>*>(__it)->storage ==
                    static_cast<node<_Tp>*>(__it->link)->storage)
@@ -922,14 +922,14 @@ protected:
         void resize(std::size_t __n, const _Tp& __val)
         {
             std::size_t old_size = size();
-            auto* old_finish = finish.link;
+            auto old_finish = finish.link;
             resize(__n);
             if(size() <= old_size)
             {
                 return;
             }
-            for (auto* __it = old_finish ? old_finish->link : begin(); 
-                       __it != nullptr; __it = __it->link)
+            for (auto __it = old_finish ? old_finish->link : begin(); 
+                      __it != nullptr; __it = __it->link)
             {
                 static_cast<node<_Tp>*>(__it)->storage = __val;
             }   
@@ -939,8 +939,8 @@ protected:
         {
             if(!empty())
             {
-                node_base* __temp = nullptr;
-                for (auto* __it = begin(); __it != nullptr; )
+                node_base __temp = nullptr;
+                for (auto __it = begin(); __it != nullptr; )
                 {
                     __temp = __it;
                     __it = __it->link;

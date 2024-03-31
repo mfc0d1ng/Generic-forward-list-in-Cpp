@@ -407,8 +407,8 @@ protected:
         void swap(std::size_t& __c) noexcept
         {
             auto __tmp = __c;
-            __c = this->count;
-            this->count = __tmp;
+            __c = count;
+            count = __tmp;
         }
 
         void reset(void) noexcept

@@ -280,7 +280,7 @@ public:
 
     /**
      * @brief Inserts given value into %forward_list after specified iterator.
-     * @param __position Iterator into the %forward_list.
+     * @param __position An iterator into the %forward_list.
      * @param __val      Data to be inserted.
      * @return  An iterator that points to the inserted data.
      * 
@@ -304,7 +304,7 @@ public:
     /**
      *  @brief  Inserts the contents of an initializer_list into
      *          %forward_list after the specified iterator.
-     *  @param  __position  Iterator into the %forward_list.
+     *  @param  __position  An iterator into the %forward_list.
      *  @param  __list      An initializer_list.
      *  @return   An iterator pointing to the last inserted element
      *            or @a __position if @a __list is empty.

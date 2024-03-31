@@ -104,7 +104,7 @@ public:
      *  Returns a const iterator that points before the first element
      *  in the %forward_list.  Iteration is done in ordinary element order.
      */
-    Iterator before_begin(void) const noexcept
+    const_Iterator before_begin(void) const noexcept
     {
         return object.before_begin();
     }
@@ -280,9 +280,9 @@ public:
 
     /**
      * @brief Inserts given value into %forward_list after specified iterator.
-     * @param __position An iterator into the %forward_list.
+     * @param __position Iterator into the %forward_list.
      * @param __val      Data to be inserted.
-     * @return An iterator that points to the inserted data.
+     * @return Iterator that points to the inserted data.
      * 
      * This function will insert a copy of the given value after the specified location.
      * Due to the nature of a %forward_list this operation can be done in constant time,
@@ -304,9 +304,9 @@ public:
     /**
      *  @brief  Inserts the contents of an initializer_list into
      *          %forward_list after the specified iterator.
-     *  @param  __position  An iterator into the %forward_list.
+     *  @param  __position  Iterator into the %forward_list.
      *  @param  __list      An initializer_list.
-     *  @return  An iterator pointing to the last inserted element
+     *  @return  Iterator pointing to the last inserted element
      *           or @a __position if @a __list is empty.
      *
      *  This function will insert copies of the data in the
@@ -328,8 +328,8 @@ public:
 
     /**
      * @brief Removes the element pointed to by the iterator following position.
-     * @param __position An iterator pointing before the element to be erased.
-     * @return An iterator pointing to the element following the one that was 
+     * @param __position Iterator pointing before the element to be erased.
+     * @return Iterator pointing to the element following the one that was 
      *         erased, or end() if no such element exists.
      * 
      * This function will erase the element pointed to by the iterator following
@@ -346,9 +346,9 @@ public:
 
     /**
      * @brief Removes a range of elements.
-     * @param __first An iterator pointing before the first element to be erased.
-     * @param __last  An iterator pointing to one past the last element to be erased.
-     * @return An iterator pointing to the element pointed to by @a last
+     * @param __first Iterator pointing before the first element to be erased.
+     * @param __last  Iterator pointing to one past the last element to be erased.
+     * @return Iterator pointing to the element pointed to by @a last
      *         prior to erasing (or end()).
      * 
      * This function will erase the elements in the range @a [first,last) and 

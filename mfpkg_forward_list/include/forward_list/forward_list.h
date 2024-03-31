@@ -282,7 +282,7 @@ public:
      * @brief Inserts given value into %forward_list after specified iterator.
      * @param __position Iterator into the %forward_list.
      * @param __val      Data to be inserted.
-     * @return  Iterator that points to the inserted data.
+     * @return  An iterator that points to the inserted data.
      * 
      * This function will insert a copy of the given value after the specified location.
      * Due to the nature of a %forward_list this operation can be done in constant time,
@@ -306,8 +306,8 @@ public:
      *          %forward_list after the specified iterator.
      *  @param  __position  Iterator into the %forward_list.
      *  @param  __list      An initializer_list.
-     *  @return  Iterator pointing to the last inserted element
-     *           or @a __position if @a __list is empty.
+     *  @return   An iterator pointing to the last inserted element
+     *            or @a __position if @a __list is empty.
      *
      *  This function will insert copies of the data in the
      *  initializer_list @a __list into the %forward_list after 
@@ -329,8 +329,8 @@ public:
     /**
      * @brief Removes the element pointed to by the iterator following position.
      * @param __position Iterator pointing before the element to be erased.
-     * @return Iterator pointing to the element following the one that was 
-     *         erased, or end() if no such element exists.
+     * @return  An iterator pointing to the element following the one that was 
+     *          erased, or end() if no such element exists.
      * 
      * This function will erase the element pointed to by the iterator following
      * position and thus shorten the %forward_list by one. 
@@ -348,7 +348,7 @@ public:
      * @brief Removes a range of elements.
      * @param __first Iterator pointing before the first element to be erased.
      * @param __last  Iterator pointing to one past the last element to be erased.
-     * @return Iterator pointing to the element pointed to by @a last
+     * @return  An iterator pointing to the element pointed to by @a last
      *         prior to erasing (or end()).
      * 
      * This function will erase the elements in the range @a [first,last) and 

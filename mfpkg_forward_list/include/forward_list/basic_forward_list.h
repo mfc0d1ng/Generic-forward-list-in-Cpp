@@ -420,7 +420,7 @@ protected:
 
         void exit(const char* __msg) noexcept
         {
-            std::printf("%s : Out of memory", __msg);
+            std::cerr << __msg << " : Out of memory" << '\n';
             std::exit(EXIT_FAILURE);
         }
 

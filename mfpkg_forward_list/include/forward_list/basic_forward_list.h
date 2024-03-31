@@ -454,7 +454,7 @@ protected:
 
         void assign(const _Self& __list)
         {
-            if(!__list.empty())
+            if(__list.empty())
             {
                 clear();
                 return;

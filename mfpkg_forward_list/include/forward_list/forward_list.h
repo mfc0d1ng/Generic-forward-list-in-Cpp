@@ -349,7 +349,7 @@ public:
      * @param __first Iterator pointing before the first element to be erased.
      * @param __last  Iterator pointing to one past the last element to be erased.
      * @return  An iterator pointing to the element pointed to by @a last
-     *         prior to erasing (or end()).
+     *          prior to erasing (or end()).
      * 
      * This function will erase the elements in the range @a [first,last) and 
      * shorten the %forward_list accordingly.

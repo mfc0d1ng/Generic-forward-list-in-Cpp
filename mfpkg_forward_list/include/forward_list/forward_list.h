@@ -282,7 +282,7 @@ public:
      * @brief Inserts given value into %forward_list after specified iterator.
      * @param __position Iterator into the %forward_list.
      * @param __val      Data to be inserted.
-     * @return Iterator that points to the inserted data.
+     * @return  Iterator that points to the inserted data.
      * 
      * This function will insert a copy of the given value after the specified location.
      * Due to the nature of a %forward_list this operation can be done in constant time,

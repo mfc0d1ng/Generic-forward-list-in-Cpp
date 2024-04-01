@@ -578,6 +578,7 @@ public:
     {
         object.swap(__list.object);
     }
+
 };
 
 #endif

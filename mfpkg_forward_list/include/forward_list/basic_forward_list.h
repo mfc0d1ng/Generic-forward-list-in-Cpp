@@ -921,14 +921,14 @@ protected:
 
         void resize(std::size_t __n, const _Tp& __val)
         {
-            std::size_t old_size = size();
-            auto old_finish = finish.link;
+            std::size_t __tmp_size = size();
+            auto __tmp_finish = rbegin();
             resize(__n);
-            if(size() <= old_size)
+            if(size() <= __tmp_size)
             {
                 return;
             }
-            for (auto __it = old_finish ? old_finish->link : begin(); 
+            for (auto __it = __tmp_finish ? __tmp_finish->link : begin(); 
                       __it != nullptr; __it = __it->link)
             {
                 static_cast<node<_Tp>*>(__it)->storage = __val;

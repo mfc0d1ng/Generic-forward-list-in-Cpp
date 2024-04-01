@@ -939,7 +939,7 @@ protected:
         {
             if(!empty())
             {
-                node_base *__temp = nullptr;
+                node_base* __temp = nullptr;
                 for (auto __it = begin(); __it != nullptr; )
                 {
                     __temp = __it;

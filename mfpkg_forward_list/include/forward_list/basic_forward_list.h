@@ -235,9 +235,9 @@ protected:
         node_base finish;
         std::size_t count;
 
-        node<_Tp>* get_node(const _Tp& __data)
+        node<_Tp>* get_node(const _Tp& __val)
         {
-            node<_Tp>* __node = new (std::nothrow) node<_Tp>({nullptr, __data});
+            node<_Tp>* __node = new (std::nothrow) node<_Tp>({nullptr, __val});
             if(!__node)
             {
                 clear();
@@ -515,9 +515,9 @@ protected:
             return nullptr;
         }
 
-        node_base* insert_after(node_base* __pos, const _Tp& __data)
+        node_base* insert_after(node_base* __pos, const _Tp& __val)
         {
-            node<_Tp>* __node = get_node(__data);
+            node<_Tp>* __node = get_node(__val);
             if(empty())
             {
                 init_list(__node);
